@@ -41,4 +41,9 @@ const mapStateToProps = (state) => {
 
 // We use 'connect' fn function for getting "partial snapshot" of Redux store to our component as a prop
 // And that's it! Now we can use this prop in our component
+
+// In addition, we have selectSong (action creator for Redux)
+// We get it to "connect" as a second argument ({ }) for one idea - to recognize it as Action Creator for Redux
+// If we don't make it (for example, use "selectSong" as a plain function), Redux won't recognize it as Action
+// And if we do it right, Redux can "dispatch" our actions to reducers
 export default connect(mapStateToProps, { selectSong })(SongList);
