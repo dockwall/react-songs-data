@@ -35,7 +35,6 @@ class SongList extends React.Component {
 // This function gets Redux state and returns information relevant to the given component
 // Name of this function is recomend by convention but not constant
 const mapStateToProps = (state) => {
-    console.log(state)
     return { songs: state.songs };
 };
 
