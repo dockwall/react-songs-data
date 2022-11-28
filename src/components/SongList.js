@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { selectSong } from '../actions'
 
 class SongList extends React.Component {
     renderList() {
@@ -7,7 +8,12 @@ class SongList extends React.Component {
             return (
                 <div className='item' key={song.title}>
                     <div className="right floated content">
-                        <button className="ui button primary">Show info</button>
+                        <button
+                            className="ui button primary"
+                            onClick={() => this.props.selectSong(song)}
+                        >
+                            Show info
+                        </button>
                     </div>
                     <div className="content">
                         <h2>{song.title}</h2>
@@ -34,4 +40,9 @@ const mapStateToProps = (state) => {
 
 // We use 'connect' fn function for getting "partial snapshot" of Redux store to our component as a prop
 // And that's it! Now we can use this prop in our component
-export default connect(mapStateToProps)(SongList);
+
+// In addition, we have selectSong (action creator for Redux)
+// We get it to "connect" as a second argument ({ }) for one idea - to recognize it as Action Creator for Redux
+// If we don't make it (for example, use "selectSong" as a plain function), Redux won't recognize it as Action
+// And if we do it right, Redux can "dispatch" our actions to reducers
+export default connect(mapStateToProps, { selectSong })(SongList);
