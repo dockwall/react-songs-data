@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
 
+// See SongList for understanding react-redux things
+
 const SongDetail = ({ selectedSong }) => {
     return selectedSong ? (
         <div>
